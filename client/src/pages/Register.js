@@ -13,7 +13,7 @@ import {
 import {Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { toast} from 'react-toastify';
-// import { login } from '../redux/features/authSlice';
+import { register } from '../redux/features/authSlice';
 
 
 const initialState ={
@@ -37,9 +37,12 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // if(email && password){
-        //     dispatch(login({formValue,navigate, toast}));
-        // }
+        if(password !== confirmPassword){
+          return toast.error("Password did not match");
+        }
+        if(email && password && firstName && lastName && confirmPassword){
+          dispatch(register({formValue,navigate, toast}));
+        }
     };
     const onInputChange = (e)=> {
         let {name,value}= e.target;
@@ -62,7 +65,7 @@ const Register = () => {
         <MDBCardBody>
             <MDBValidation onSubmit={handleSubmit} noValidate className='row g-3'>
                 <div className='col-md-6'>
-                    <MDBValidationItem feedback='Enter your first name' invalid>
+                    <MDBValidationItem feedback='Please provide first name' invalid>
                         <MDBInput
                         label="First Name"
                         type="text"
@@ -74,7 +77,7 @@ const Register = () => {
                     </MDBValidationItem>
                 </div>
                 <div className='col-md-6'>
-                    <MDBValidationItem feedback='Enter your last name' invalid>
+                    <MDBValidationItem feedback='Please provide last name' invalid>
                         <MDBInput
                         label="Last Name"
                         type="text"
@@ -86,7 +89,7 @@ const Register = () => {
                     </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Enter your email' invalid>
+                    <MDBValidationItem feedback='Please provide email' invalid>
                         <MDBInput
                         label="Email"
                         type="email"
@@ -98,7 +101,7 @@ const Register = () => {
                     </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Enter your password' invalid>
+                    <MDBValidationItem feedback='Please provide password' invalid>
                         <MDBInput
                         label="Password"
                         type="password"
@@ -110,7 +113,7 @@ const Register = () => {
                     </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Enter your confirm password' invalid>
+                    <MDBValidationItem feedback='Please provide confirm password' invalid>
                         <MDBInput
                         label="Confirm Password"
                         type="password"

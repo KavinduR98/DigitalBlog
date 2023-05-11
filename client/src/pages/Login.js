@@ -59,7 +59,7 @@ const Login = () => {
         <MDBCardBody>
             <MDBValidation onSubmit={handleSubmit} noValidate className='row g-3'>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Please provide your email' invalid>
+                    <MDBValidationItem feedback='Please provide email' invalid>
                         <MDBInput
                         label="Email"
                         type="email"
@@ -71,7 +71,7 @@ const Login = () => {
                     </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Please provide your password' invalid>
+                    <MDBValidationItem feedback='Please provide password' invalid>
                         <MDBInput
                         label="Password"
                         type="password"
