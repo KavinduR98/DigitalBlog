@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.js";
+import blogRouter from "./routes/blog.js";
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 app.use("/users", userRouter);// http://localhost:5000/users/signup
+app.use("/blogs", blogRouter);
 
 
 app.get("/", (req, res) => {
