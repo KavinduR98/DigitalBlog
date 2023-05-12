@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AddEditBlog from './pages/AddEditBlog';
 import { setUser } from "./redux/features/authSlice";
 import Header from './components/Header';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/addBlog' element={<AddEditBlog/>}/>     
       </Routes>
     </div>
     </BrowserRouter>

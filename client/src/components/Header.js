@@ -12,7 +12,6 @@ import {
 } from "mdb-react-ui-kit";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../redux/features/authSlice";
-import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 
 const Header = () => {
@@ -20,7 +19,6 @@ const Header = () => {
     const [search, setSearch] = useState("");
     const { user } = useSelector((state) => ({ ...state.auth }));
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const token = user?.token;
 
     if (token) {
@@ -102,7 +100,7 @@ const Header = () => {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Search Report"
+                            placeholder="Search Article"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
