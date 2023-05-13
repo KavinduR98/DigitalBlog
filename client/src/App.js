@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import SingleBlog from './pages/SingleBlog';
+import NotFound from "./pages/NotFound";
 import AddEditBlog from './pages/AddEditBlog';
 
 import PrivateRoute from "./components/PrivateRoute";
@@ -60,6 +61,7 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
             } />
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
       </div>
     </BrowserRouter>
