@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogs} from "../redux/features/blogSlice";
+import { getBlogs, setCurrentPage } from "../redux/features/blogSlice";
 import { useLocation } from "react-router-dom";
-import CardReport from '../components/CardBlog';
+import CardReport from "../components/CardBlog";
+import Spinner from "../components/Spinner";
+import Pagination from "../components/Pagination";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -24,7 +26,7 @@ const Home = () => {
   }, [currentPage]);
 
   if (loading) {
-    // return <Spinner/>;
+    return <Spinner />;
   }
 
   return (
@@ -50,13 +52,22 @@ const Home = () => {
         )}
         <MDBCol>
           <MDBContainer>
-            <MDBRow className='row-cols-1 row-cols-md-3 g-2'>
-              {blogs && blogs.map((item) => <CardReport key={item._id} {...item} />)}
+            <MDBRow className="row-cols-1 row-cols-md-3 g-2">
+              {blogs &&
+                blogs.map((item) => <CardReport key={item._id} {...item} />)}
             </MDBRow>
           </MDBContainer>
         </MDBCol>
       </MDBRow>
-    </div >
+      {blogs.length > 0 && (
+        <Pagination
+          setCurrentPage={setCurrentPage}
+          numberOfPages={numberOfPages}
+          currentPage={currentPage}
+          dispatch={dispatch}
+        />
+      )}
+    </div>
   );
 };
 

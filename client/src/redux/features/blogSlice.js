@@ -72,6 +72,11 @@ const blogSlice = createSlice({
         error: "",
         loading: false,
     },
+    reducers:{
+        setCurrentPage: (state, action) =>{
+            state.currentPage = action.payload;
+        }
+    },
     extraReducers: {
         [createBlog.pending]: (state, action) => {
             state.loading = true;
@@ -129,5 +134,7 @@ const blogSlice = createSlice({
         },
     },
 });
+
+export const  {setCurrentPage} = blogSlice.actions;
 
 export default blogSlice.reducer;
