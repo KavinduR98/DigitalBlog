@@ -73,6 +73,15 @@ export const getBlog = async(req,res)=>{
     }
 };
 
+export const getBlogsByUser = async(req,res)=>{
+  const {id} = req.params;
+  if(!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(404).json({message: "User does not exist"})
+  }
+  const userBlogs = await BlogModel.find({creator: id});
+  res.status(200).json(userBlogs);
+};
+
 export const deleteBlog = async (req, res) => {
     const { id } = req.params;
     try {
@@ -116,4 +125,35 @@ export const deleteBlog = async (req, res) => {
       res.status(404).json({ message: error.message });
     }
     
+};
+
+export const getBlogsBySearch = async(req,res)=>{
+  const {searchQuery}=req.query;
+  try{
+      const title= new RegExp(searchQuery,"i");
+      const blogs = await BlogModel.find({title});
+      res.json(blogs);
+  }catch(error){
+      res.status(404).json({message:"Something went wrong"});
+  }
+};
+
+export const getBlogsByTag = async(req,res)=>{
+  const {tag}=req.params;
+  try{
+     const blogs = await BlogModel.find({tags:{$in: tag}});
+     res.json(blogs);
+  }catch(error){
+      res.status(404).json({message:"Something went wrong"});
+  }
+};
+
+export const getRelatedBlogs = async(req,res)=>{
+  const tags =req.body;
+  try{
+     const blogs = await BlogModel.find({tags:{$in: tags}});
+     res.json(blogs);
+  }catch(error){
+      res.status(404).json({message:"Something went wrong"});
+  }
 };
