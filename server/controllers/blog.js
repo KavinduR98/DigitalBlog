@@ -35,3 +35,28 @@ export const getBlogs = async(req,res)=>{
         res.status(404).json({message: "Something went wrong"});
     }
 };
+
+export const updateBlog = async(req,res)=>{
+    const {id} = req.params;
+    const {title, description, creator, imageFile, tags} = req.body;
+
+    try{
+     if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({message: `No article found with the id: ${id}`});
+        }
+
+        const updatedBlog = {
+            creator,
+            title,
+            description,
+            tags,
+            imageFile,
+            _id: id
+        }
+        await BlogModel.findByIdAndUpdate(id, updatedBlog, {new:true});
+        res.json(updatedBlog);
+    }catch(error){
+        res.status(404).json({message: "Something went wrong"});
+    }
+    
+};
