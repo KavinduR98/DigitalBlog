@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogs, setCurrentPage } from "../redux/features/blogSlice";
+import { getBlogs} from "../redux/features/blogSlice";
 import { useLocation } from "react-router-dom";
+import CardReport from '../components/CardBlog';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -47,8 +48,15 @@ const Home = () => {
             We couldn't find any match for "{searchQuery}"
           </MDBTypography>
         )}
+        <MDBCol>
+          <MDBContainer>
+            <MDBRow className='row-cols-1 row-cols-md-3 g-2'>
+              {blogs && blogs.map((item) => <CardReport key={item._id} {...item} />)}
+            </MDBRow>
+          </MDBContainer>
+        </MDBCol>
       </MDBRow>
-    </div>
+    </div >
   );
 };
 
