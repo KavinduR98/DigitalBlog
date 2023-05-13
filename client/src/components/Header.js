@@ -28,9 +28,16 @@ const Header = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit= (e)=>{
         e.preventDefault();
-    };
+        if(search){
+          dispatch(searchBlogs(search));
+          navigate(`/blogs/search?searchQuery=${search}`);
+          setSearch("");
+        }else{
+          navigate("/");
+        }
+      }
 
     const handleLogout = () => {
         dispatch(setLogout());
