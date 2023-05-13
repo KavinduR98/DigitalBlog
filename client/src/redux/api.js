@@ -23,3 +23,4 @@ export const deleteBlog = (id)=> API.delete(`/blog/${id}`);
 
 export const likeBlog = (id) => API.patch(`/blog/like/${id}`);
 export const getRelatedBlogs = (tags)=> API.post(`/blog/relatedBlogs`,tags);
+export const getBlogBySearch = (searchQuery)=> API.get(`/blog/search?searchQuery=${searchQuery}`);

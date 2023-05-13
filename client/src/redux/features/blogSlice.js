@@ -72,6 +72,17 @@ export const getRelatedBlogs = createAsyncThunk(
     }
 });
 
+export const searchBlogs = createAsyncThunk(
+    "report/searchBlogs",
+    async(searchQuery,{rejectWithValue})=>{
+    try{
+        const response = await api.getBlogBySearch(searchQuery);
+        return response.data;
+    }catch(err){
+        return rejectWithValue(err.response.data);
+    }
+});
+
 
 
 const blogSlice = createSlice({

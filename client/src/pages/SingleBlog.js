@@ -3,8 +3,8 @@ import {MDBCard, MDBCardBody, MDBCardText,MDBCardImage,MDBContainer,MDBIcon, MDB
 import {useDispatch,useSelector} from "react-redux";
 import {useParams, useNavigate} from "react-router-dom";
 import moment from "moment";
-import { getRelatedReports, getReport } from '../redux/features/blogSlice';
-import RelatedReports from '../components/RelatedReports';
+import { getRelatedBlogs, getBlog } from '../redux/features/blogSlice';
+import RelatedReports from '../components/RelatedBlogs';
 
 
 
@@ -36,8 +36,8 @@ const SingleBlog = () => {
             <MDBCardImage
             position='top'
             style={{width: "100%", maxHeight:"600px"}}
-            src={report.imageFile}
-            alt={report.title}
+            src={blog.imageFile}
+            alt={blog.title}
             />
                   <MDBCardBody>
                       <MDBBtn tag="a" color='none' style={{ float: "left", color: "#000" }} onClick={() => navigate("/")}>
@@ -67,7 +67,7 @@ const SingleBlog = () => {
                     size='lg'
                     />
                     <small className='text-muted'>
-                        {moment(report.createdAt).fromNow()}
+                        {moment(blog.createdAt).fromNow()}
                     </small>
                 </MDBCardText>
                 <MDBCardText className='lead mb-0 text-start'>
