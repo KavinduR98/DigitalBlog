@@ -61,6 +61,17 @@ export const likeBlog = createAsyncThunk(
     }
 );
 
+export const getRelatedBlogs = createAsyncThunk(
+    "report/getRelatedBlogs",
+    async(tags,{rejectWithValue})=>{
+    try{
+        const response = await api.getRelatedBlogs(tags);
+        return response.data;
+    }catch(err){
+        return rejectWithValue(err.response.data);
+    }
+});
+
 
 
 const blogSlice = createSlice({
