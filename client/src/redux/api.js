@@ -20,6 +20,7 @@ export const getBlogs = (page)=> API.get(`/blog?page=${page}`);
 export const updateBlog = (updatedBlogData,id)=> API.patch(`/blog/${id}`, updatedBlogData);
 export const getBlog = (id)=> API.get(`/blog/${id}`);
 export const deleteBlog = (id)=> API.delete(`/blog/${id}`);
+export const getBlogsByUser = (userId)=> API.get(`/blog/userBlogs/${userId}`);
 
 export const likeBlog = (id) => API.patch(`/blog/like/${id}`);
 export const getRelatedBlogs = (tags)=> API.post(`/blog/relatedBlogs`,tags);

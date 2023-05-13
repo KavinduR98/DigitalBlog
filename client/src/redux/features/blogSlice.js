@@ -83,6 +83,29 @@ export const searchBlogs = createAsyncThunk(
     }
 });
 
+export const getBlogsByUser = createAsyncThunk(
+    "report/getBlogsByUser",
+    async(userId,{rejectWithValue})=>{
+    try{
+        const response = await api.getBlogsByUser(userId);
+        return response.data;
+    }catch(err){
+        return rejectWithValue(err.response.data);
+    }
+});
+
+export const deleteBlog = createAsyncThunk(
+    "report/deleteBlog",
+    async({id,toast},{rejectWithValue})=>{
+    try{
+        const response = await api.deleteBlog(id);
+        toast.success("Article deleted successfully");
+        return response.data;
+    }catch(err){
+        return rejectWithValue(err.response.data);
+    }
+});
+
 
 
 const blogSlice = createSlice({
@@ -91,6 +114,10 @@ const blogSlice = createSlice({
         blog: {},
         blogs: [],
         userBlogs: [],
+        tagReports: [],
+        relatedBlogs: [],
+        currentPage: 1,
+        numberOfPages: null,
         error: "",
         loading: false,
     },
@@ -153,6 +180,81 @@ const blogSlice = createSlice({
         [getBlog.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload.message;
+        },
+        [getBlogsByUser.pending]: (state,action)=>{
+            state.loading = true;
+        },
+        [getBlogsByUser.fulfilled]:(state,action)=>{
+            state.loading = false;
+           state.userBlogs = action.payload;
+        },
+        [getBlogsByUser.rejected]:(state, action)=>{
+          state.loading = false;
+          state.error = action.payload.message;
+        },
+        [deleteBlog.pending]: (state,action)=>{
+            state.loading = true;
+        },
+        [deleteBlog.fulfilled]:(state,action)=>{
+            state.loading = false;
+            console.log("action", action);
+           const {arg: {id}} = action.meta;
+           if(id){
+               state.userBlogs = state.userBlogs.filter((item)=> item._id !== id);
+               state.blogs = state.blogs.filter((item)=> item._id !== id);
+           }
+        },
+        [deleteBlog.rejected]:(state, action)=>{
+          state.loading = false;
+          state.error = action.payload.message;
+        },
+        [likeBlog.pending]: (state, action) => {},
+        [likeBlog.fulfilled]: (state, action) => {
+          state.loading = false;
+          const {
+            arg: { _id },
+          } = action.meta;
+          if (_id) {
+            state.blogs = state.blogs.map((item) =>
+              item._id === _id ? action.payload : item
+            );
+          }
+        },
+        [likeBlog.rejected]: (state, action) => {
+          state.error = action.payload.message;
+        },
+        [searchBlogs.pending]: (state,action)=>{
+            state.loading = true;
+        },
+        [searchBlogs.fulfilled]:(state,action)=>{
+            state.loading = false;
+           state.blogs = action.payload;
+        },
+        [searchBlogs.rejected]:(state, action)=>{
+          state.loading = false;
+          state.error = action.payload.message;
+        },
+        [getBlogsByTag.pending]: (state,action)=>{
+            state.loading = true;
+        },
+        [getBlogsByTag.fulfilled]:(state,action)=>{
+            state.loading = false;
+           state.tagBlogs = action.payload;
+        },
+        [getBlogsByTag.rejected]:(state, action)=>{
+          state.loading = false;
+          state.error = action.payload.message;
+        },
+        [getRelatedBlogs.pending]: (state,action)=>{
+            state.loading = true;
+        },
+        [getRelatedBlogs.fulfilled]:(state,action)=>{
+            state.loading = false;
+           state.relatedBlogs= action.payload;
+        },
+        [getRelatedBlogs.rejected]:(state, action)=>{
+          state.loading = false;
+          state.error = action.payload.message;
         },
     },
 });

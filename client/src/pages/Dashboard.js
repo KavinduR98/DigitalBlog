@@ -13,7 +13,7 @@ import {
 } from "mdb-react-ui-kit";
 import {useDispatch,useSelector} from "react-redux";
 import {Link} from 'react-router-dom';
-import { getblogsByUser } from '../redux/features/blogSlice';
+import { getBlogsByUser } from '../redux/features/blogSlice';
 import Spinner from '../components/Spinner';
 import { deleteBlog } from '../redux/features/blogSlice';
 import {toast} from "react-toastify";
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     useEffect(()=>{
         if(userId){
-            dispatch(getblogsByUser(userId))      
+            dispatch(getBlogsByUser(userId))      
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[userId]);
@@ -39,7 +39,7 @@ const Dashboard = () => {
         return str;
     };
     if(loading){
-        // return <Spinner/>;
+        return <Spinner/>;
       }
 
       const handleDelete =(id)=>{
