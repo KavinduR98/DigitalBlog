@@ -94,6 +94,17 @@ export const getBlogsByUser = createAsyncThunk(
     }
 });
 
+export const getBlogsByTag = createAsyncThunk(
+    "report/getBlogsByTag",
+    async(tag,{rejectWithValue})=>{
+    try{
+        const response = await api.getTagBlogs(tag);
+        return response.data;
+    }catch(err){
+        return rejectWithValue(err.response.data);
+    }
+});
+
 export const deleteBlog = createAsyncThunk(
     "report/deleteBlog",
     async({id,toast},{rejectWithValue})=>{
