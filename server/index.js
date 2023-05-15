@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     res.send("Welcome to blog API");
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8800;
 
 
 mongoose.connect(process.env.MONGODB_URL)
