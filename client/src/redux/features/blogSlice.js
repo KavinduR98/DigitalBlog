@@ -125,7 +125,7 @@ const blogSlice = createSlice({
         blog: {},
         blogs: [],
         userBlogs: [],
-        tagReports: [],
+        tagBlogs: [],
         relatedBlogs: [],
         currentPage: 1,
         numberOfPages: null,
@@ -143,7 +143,7 @@ const blogSlice = createSlice({
         },
         [createBlog.fulfilled]: (state, action) => {
             state.loading = false;
-            state.blogs.push = [action.payload];
+            state.blogs = [action.payload];
         },
         [createBlog.rejected]: (state, action) => {
             state.loading = false;

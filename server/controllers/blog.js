@@ -130,7 +130,7 @@ export const deleteBlog = async (req, res) => {
 export const getBlogsBySearch = async(req,res)=>{
   const {searchQuery}=req.query;
   try{
-      const title= new RegExp(searchQuery,"i");
+      const title = new RegExp(searchQuery,"i");
       const blogs = await BlogModel.find({title});
       res.json(blogs);
   }catch(error){

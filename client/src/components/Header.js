@@ -13,7 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../redux/features/authSlice";
 import { searchBlogs } from '../redux/features/blogSlice';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 
 const Header = () => {
@@ -31,27 +31,27 @@ const Header = () => {
         }
     }
 
-    const handleSubmit= (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if(search){
-          dispatch(searchBlogs(search));
-          navigate(`/blogs/search?searchQuery=${search}`);
-          setSearch("");
-        }else{
-          navigate("/");
+        if (search) {
+            dispatch(searchBlogs(search));
+            navigate(`/blogs/search?searchQuery=${search}`);
+            setSearch("");
+        } else {
+            navigate("/");
         }
-      }
+    }
 
     const handleLogout = () => {
         dispatch(setLogout());
     };
 
     return (
-        <MDBNavbar fixed="top" expand="lg" style={{ backgroundColor: "#f0e6ea" }}>
+        <MDBNavbar fixed="top" expand="lg" style={{ backgroundColor: "#343a40" }}>
             <MDBContainer>
                 <MDBNavbarBrand
                     href="/"
-                    style={{ color: "#606080", fontWeight: "600", fontSize: "22px" }}
+                    style={{ color: "#fff", fontWeight: "600", fontSize: "22px" }}
                 >
                     Digital~Blog
                 </MDBNavbarBrand>
@@ -66,25 +66,21 @@ const Header = () => {
                 </MDBNavbarToggler>
                 <MDBCollapse show={show} navbar>
                     <MDBNavbarNav right fullWidth={false} className="mb-2 mb-lg-0">
-                        {user?.result?._id && (
-                            <h5 style={{ marginRight: "30px", marginTop: "27px" }}>
-                                Logged in as: {user?.result?.name}
-                            </h5>
-                        )}
                         <MDBNavbarItem>
-                            <MDBNavbarLink href="/">
+                            <MDBNavbarLink href="/" style={{paddingRight:"30px"}}>
                                 <p className="header-text">Home</p>
                             </MDBNavbarLink>
                         </MDBNavbarItem>
+                    
                         {user?.result?._id && (
                             <>
                                 <MDBNavbarItem>
-                                    <MDBNavbarLink href="/addBlog">
-                                        <p className="header-text">Add Blog</p>
+                                    <MDBNavbarLink href="/addBlog" style={{paddingRight:"30px"}}>
+                                        <p className="header-text">Write&nbsp;<MDBIcon fas icon="pen-alt" /></p>
                                     </MDBNavbarLink>
                                 </MDBNavbarItem>
                                 <MDBNavbarItem>
-                                    <MDBNavbarLink href="/dashboard">
+                                    <MDBNavbarLink href="/dashboard" style={{paddingRight:"30px"}}>
                                         <p className="header-text">Dashboard</p>
                                     </MDBNavbarLink>
                                 </MDBNavbarItem>
@@ -92,15 +88,13 @@ const Header = () => {
                         )}
                         {user?.result?._id ? (
                             <MDBNavbarItem>
-                                <MDBNavbarLink href="/login">
-                                    <p className="header-text" onClick={handleLogout}>
-                                        Logout
-                                    </p>
+                                <MDBNavbarLink href="/login" style={{paddingRight:"30px"}}>
+                                    <p className="header-text" onClick={handleLogout}>SignOut&nbsp;<MDBIcon fas icon="sign-out-alt" /></p>
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                         ) : (
                             <MDBNavbarItem>
-                                <MDBNavbarLink href="/login">
+                                <MDBNavbarLink href="/login"  style={{paddingRight:"30px"}}>
                                     <p className="header-text">Login</p>
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
@@ -114,12 +108,6 @@ const Header = () => {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
-                        <div
-                            data-testid="test-1"
-                            style={{ marginTop: "5px", marginLeft: "5px" }}
-                        >
-                            <MDBIcon fas icon="search" />
-                        </div>
                     </form>
                 </MDBCollapse>
             </MDBContainer>

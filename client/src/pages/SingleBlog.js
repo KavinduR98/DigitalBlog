@@ -35,7 +35,7 @@ const SingleBlog = () => {
         <MDBCard className='mb-3 mt-2'>
             <MDBCardImage
             position='top'
-            style={{width: "100%", maxHeight:"600px"}}
+            style={{maxWidth: "100%", maxHeight:"800px", marginTop:"60px"}}
             src={blog.imageFile}
             alt={blog.title}
             />
@@ -47,7 +47,6 @@ const SingleBlog = () => {
                               icon='long-arrow-alt-left'
                               style={{float:"left"}}
                           />
-
                       </MDBBtn>
                 <h3>{blog.title}</h3>
                 <span>

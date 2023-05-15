@@ -34,8 +34,9 @@ const Home = () => {
       style={{
         margin: "auto",
         padding: "15px",
-        maxWidth: "1000px",
+        maxWidth: "1200px",
         alignContent: "center",
+        marginTop:"20px"
       }}
     >
       <MDBRow className="mt-5">

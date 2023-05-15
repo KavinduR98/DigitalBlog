@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard';
 import SingleBlog from './pages/SingleBlog';
 import NotFound from "./pages/NotFound";
 import AddEditBlog from './pages/AddEditBlog';
+import TagBlogs from "./pages/TagBlogs";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/blogs/search' element={<Home />} />
+          <Route path='/blogs/tag/:tag' element={<TagBlogs/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
 
