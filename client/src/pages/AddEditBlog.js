@@ -108,7 +108,7 @@ const AddEditBlog = () => {
                         />
                     </div>
                     <div className='col-md-10'>
-                        <h5 style={{ paddingTop: "5px", }}>{id ? "Upadate Article" : "Write Article"}</h5>
+                        <h5 style={{ paddingTop: "5px", }}>{id ? "Update Article" : "Write Article"}</h5>
                     </div>
                     <div className='col-md-1'></div>
 

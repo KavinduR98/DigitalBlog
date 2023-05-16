@@ -15,7 +15,7 @@ export const createBlog = createAsyncThunk(
     });
 
 export const updateBlog = createAsyncThunk(
-    "report/updateBlog",
+    "blog/updateBlog",
     async ({ id, updatedBlogData, toast, navigate }, { rejectWithValue }) => {
         try {
             const response = await api.updateBlog(updatedBlogData, id);
@@ -28,7 +28,7 @@ export const updateBlog = createAsyncThunk(
     });
 
 export const getBlogs = createAsyncThunk(
-    "report/getBlogs",
+    "blog/getBlogs",
     async (page, { rejectWithValue }) => {
         try {
             const response = await api.getBlogs(page);
@@ -39,7 +39,7 @@ export const getBlogs = createAsyncThunk(
     });
 
 export const getBlog = createAsyncThunk(
-    "report/getBlog",
+    "blog/getBlog",
     async (id, { rejectWithValue }) => {
         try {
             const response = await api.getBlog(id);
@@ -50,7 +50,7 @@ export const getBlog = createAsyncThunk(
     });
 
 export const likeBlog = createAsyncThunk(
-    "report/likeBlog",
+    "blog/likeBlog",
     async ({ _id }, { rejectWithValue }) => {
         try {
             const response = await api.likeBlog(_id);
@@ -62,7 +62,7 @@ export const likeBlog = createAsyncThunk(
 );
 
 export const getRelatedBlogs = createAsyncThunk(
-    "report/getRelatedBlogs",
+    "blog/getRelatedBlogs",
     async(tags,{rejectWithValue})=>{
     try{
         const response = await api.getRelatedBlogs(tags);
@@ -73,7 +73,7 @@ export const getRelatedBlogs = createAsyncThunk(
 });
 
 export const searchBlogs = createAsyncThunk(
-    "report/searchBlogs",
+    "blog/searchBlogs",
     async(searchQuery,{rejectWithValue})=>{
     try{
         const response = await api.getBlogBySearch(searchQuery);
@@ -84,7 +84,7 @@ export const searchBlogs = createAsyncThunk(
 });
 
 export const getBlogsByUser = createAsyncThunk(
-    "report/getBlogsByUser",
+    "blog/getBlogsByUser",
     async(userId,{rejectWithValue})=>{
     try{
         const response = await api.getBlogsByUser(userId);
@@ -95,7 +95,7 @@ export const getBlogsByUser = createAsyncThunk(
 });
 
 export const getBlogsByTag = createAsyncThunk(
-    "report/getBlogsByTag",
+    "blog/getBlogsByTag",
     async(tag,{rejectWithValue})=>{
     try{
         const response = await api.getTagBlogs(tag);
@@ -106,7 +106,7 @@ export const getBlogsByTag = createAsyncThunk(
 });
 
 export const deleteBlog = createAsyncThunk(
-    "report/deleteBlog",
+    "blog/deleteBlog",
     async({id,toast},{rejectWithValue})=>{
     try{
         const response = await api.deleteBlog(id);

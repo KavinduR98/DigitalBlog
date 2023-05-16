@@ -38,7 +38,7 @@ const TagBlogs = () => {
     <div style={{
         margin: "auto",
         padding: "120px",
-        maxWidth: "900px",
+        maxWidth: "800px",
         alignContent: "center",
     }}>
         <h3 className='text-center'>Blog Articles with tag: {tag}</h3>
