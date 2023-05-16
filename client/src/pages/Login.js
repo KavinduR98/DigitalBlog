@@ -5,7 +5,6 @@ import {
   MDBInput,
   MDBFooter,
   MDBValidation,
-  MDBValidationItem,
   MDBBtn,
   MDBIcon,
   MDBSpinner,
@@ -59,7 +58,6 @@ const Login = () => {
         <MDBCardBody>
           <MDBValidation onSubmit={handleSubmit} noValidate className="row g-3">
             <div className="col-md-12">
-              <MDBValidationItem feedback="Please provide email" invalid>
                 <MDBInput
                   label="Email"
                   type="email"
@@ -67,11 +65,11 @@ const Login = () => {
                   name="email"
                   onChange={onInputChange}
                   required
+                  invalid
+                  validation="Please provide your email"
                 />
-              </MDBValidationItem>
             </div>
             <div className="col-md-12">
-              <MDBValidationItem feedback="Please provide password" invalid>
                 <MDBInput
                   label="Password"
                   type="password"
@@ -79,8 +77,9 @@ const Login = () => {
                   name="password"
                   onChange={onInputChange}
                   required
+                  invalid
+                  validation="Please provide your password"
                 />
-              </MDBValidationItem>
             </div>
             <div className="col-12">
               <MDBBtn style={{ width: "100%" }} className="mt-2">

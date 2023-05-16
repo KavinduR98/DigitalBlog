@@ -3,9 +3,7 @@ import {
     MDBCard,
     MDBCardBody,
     MDBValidation,
-    MDBValidationItem,
     MDBBtn,
-    MDBTextArea,
     MDBInput,
     MDBIcon
 } from "mdb-react-ui-kit";
@@ -118,7 +116,6 @@ const AddEditBlog = () => {
                 <MDBCardBody>
                     <MDBValidation onSubmit={handleSubmit} className="row g-3" noValidate>
                         <div className='col-md-12'>
-                            <MDBValidationItem feedback="Please provide title" invalid>
                                 <MDBInput
                                     label="Title"
                                     type="text"
@@ -127,12 +124,12 @@ const AddEditBlog = () => {
                                     onChange={onInputChange}
                                     className="form-control"
                                     required
+                                    invalid 
+                                    validation="Please provide the title"
                                 />
-                            </MDBValidationItem>
                         </div>
                         <div className='col-md-12'>
-                            <MDBValidationItem feedback="Please provide description" invalid>
-                                <MDBTextArea
+                                <textarea
                                     label="Description"
                                     type="text"
                                     value={description}
@@ -142,8 +139,9 @@ const AddEditBlog = () => {
                                     required
                                     textarea
                                     rows={10}
+                                    invalid 
+                                    validation="Please provide the description"
                                 />
-                            </MDBValidationItem>
                         </div>
                         <div className='col-md-12'>
                             <Chip

@@ -5,7 +5,6 @@ import {
     MDBInput,
     MDBFooter,
     MDBValidation,
-    MDBValidationItem,
     MDBBtn,
     MDBIcon,
     MDBSpinner
@@ -65,7 +64,6 @@ const Register = () => {
         <MDBCardBody>
             <MDBValidation onSubmit={handleSubmit} noValidate className='row g-3'>
                 <div className='col-md-6'>
-                    <MDBValidationItem feedback='Please provide first name' invalid>
                         <MDBInput
                         label="First Name"
                         type="text"
@@ -73,11 +71,11 @@ const Register = () => {
                         name="firstName"
                         onChange={onInputChange}
                         required
+                        invalid
+                        validation="Please provide first name"
                         />
-                    </MDBValidationItem>
                 </div>
                 <div className='col-md-6'>
-                    <MDBValidationItem feedback='Please provide last name' invalid>
                         <MDBInput
                         label="Last Name"
                         type="text"
@@ -85,11 +83,11 @@ const Register = () => {
                         name="lastName"
                         onChange={onInputChange}
                         required
+                        invalid
+                        validation="Please provide last name"
                         />
-                    </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Please provide email' invalid>
                         <MDBInput
                         label="Email"
                         type="email"
@@ -97,11 +95,11 @@ const Register = () => {
                         name="email"
                         onChange={onInputChange}
                         required
+                        invalid
+                        validation="Please provide email"
                         />
-                    </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Please provide password' invalid>
                         <MDBInput
                         label="Password"
                         type="password"
@@ -109,11 +107,11 @@ const Register = () => {
                         name="password"
                         onChange={onInputChange}
                         required
+                        invalid
+                        validation="Please provide password"
                         />
-                    </MDBValidationItem>
                 </div>
                 <div className='col-md-12'>
-                    <MDBValidationItem feedback='Please provide confirm password' invalid>
                         <MDBInput
                         label="Confirm Password"
                         type="password"
@@ -121,8 +119,9 @@ const Register = () => {
                         name="confirmPassword"
                         onChange={onInputChange}
                         required
+                        invalid
+                        validation="Please confirm password"
                         />
-                    </MDBValidationItem>
                 </div>
                 <div className="col-12">
                     <MDBBtn style={{width: "100%"}} className="mt-2">
@@ -133,7 +132,6 @@ const Register = () => {
                             tag="span"
                             className="me-2"
                             />
-
                         )}
                         Register
                     </MDBBtn>
