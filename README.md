@@ -1,4 +1,4 @@
-# DigitalBlog
+# Digital~Blog
 # Outputs : 
 ![signup](https://github.com/KavinduR98/DigitalBlog/assets/88982954/aff3cfe2-432c-4c71-8808-de897862ff96)
 ![login](https://github.com/KavinduR98/DigitalBlog/assets/88982954/03180120-d87f-4d3d-bf5e-029e0f1198e1)
